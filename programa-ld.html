@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Page not found</title>
-        <base href="/">
+        <title>Creación de Programa LD</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">2.</strong> Creación de un nuevo proyecto</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">3.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">4.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html"><strong aria-hidden="true">5.</strong> Creación de Programa LD</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">2.</strong> Creación de un nuevo proyecto</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">3.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">4.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html" class="active"><strong aria-hidden="true">5.</strong> Creación de Programa LD</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -146,13 +145,82 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1 id="4-creación-de-programa-ld"><a class="header" href="#4-creación-de-programa-ld">4. Creación de Programa LD</a></h1>
+<h2 id="41-definición-de-variables-para-el-programa-en-ld"><a class="header" href="#41-definición-de-variables-para-el-programa-en-ld">4.1. Definición de variables para el programa en LD</a></h2>
+<ol>
+<li>Dirijase al arbol de carpetas del proyecto y despliegue la carpeta del dispositivo <code>PLC [CPU 1214C DC/DC/DC]</code>, encuentre la acción <code>Add new tag table</code> (enmarcado en color azul) y presione enter sobre ella.</li>
+</ol>
+<p><img src="imgs/add-variables.jpg" alt="" /></p>
+<ul>
+<li>Lo siguiente que verá es que se ha creado un nuevo archivo <code>Tag table_1 [0]</code>, de click sobre el para abrirlo.</li>
+</ul>
+<p><img src="imgs/new-table.jpg" alt="" /></p>
+<ol start="2">
+<li>
+<p>En el centro de trabajo de variables de su software se despliega una tabla donde se pueden anexar varaibles.</p>
+<ul>
+<li>
+<p>Añada una variable de nombre <code>arranque</code> que alamacene un tipo de dato <code>Bool</code> con la dirección <code>%I0.0</code>.</p>
+</li>
+<li>
+<p>Añada una variable de nombre <code>paro</code> que almacene un tipo de dato <code>Bool</code> con dirección <code>%I0.1</code>.</p>
+</li>
+<li>
+<p>Agregue una última variable con nombre <code>motor</code> con tipo de dato <code>Bool</code> con dirección <code>%Q0.0</code></p>
+</li>
+<li>
+<p>Asegurese de que de las siguientes checkbox de cada una de las variables se encuentren enmarcadas, tal como en la imagen posterior.</p>
+<ol>
+<li><code>Accessible from HMI/OPC UA/Web API</code></li>
+<li><code>Writable from HMI/OPC UA/Web API</code></li>
+<li><code>Visible from HMI/OPC UA/Web API</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="./imgs/create-var.jpg" alt="" /></p>
+<h2 id="42-construcción-del-programa-en-lenguaje-ld"><a class="header" href="#42-construcción-del-programa-en-lenguaje-ld">4.2. Construcción del Programa en lenguaje <code>LD</code></a></h2>
+<ol>
+<li>
+<p>Para construir su programa en lenguaje <code>LD</code> siga los siguientes pasos.</p>
+<ul>
+<li>
+<p>Dirijase a la subcarpeta <code>Program blocks</code> (enmarcado en azul en la imagen inferiór) donde se encuentra su dispositivo PLC y seleccione el archivo <code>Main [OB1]</code> (enmarcado en color naranja).</p>
+</li>
+<li>
+<p>En area del programa <code>Main [OB1]</code> construya un programa como el mostrado en la imagen siguiente.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="imgs/main-plc.jpg" alt="" /></p>
+<h2 id="43-definición-de-variables-para-el-programa-en-hmi"><a class="header" href="#43-definición-de-variables-para-el-programa-en-hmi">4.3. Definición de variables para el programa en HMI.</a></h2>
+<ol>
+<li>
+<p>Añada una nueva tabla de varaibles, tal como lo hizo en la sección <a href="./programa-ld.html">4.1. Definición de variables para el programa en LD</a>; esta vez se dirigirá al dispositivo HMI del arbol de archivos del proyecto y seleccione la acción <code>Add new table</code> (enmarcada en azul en la imagen posterior); dirijase a su archivo que acaba de crear, en este caso le hemos nombrado <code>Tabla de variables_1 [3]</code> y está remarcada en verde.</p>
+</li>
+<li>
+<p>Confeccione su tabla de variables en el archivo <code>Tabla de variables_1</code> con los siguientes nombres y especificaciones:</p>
+<ul>
+<li><code>Variable_HMI_arranque</code>: Asegurese de que esté conectada a la bandera de PLC de nomobre <code>arranque</code> en la opción <code>PLC tag</code> y anexe le dirección <code>%I0.0</code> en el campo de <code>Address</code>.</li>
+<li><code>Variable_HMI_motor</code>: El campo de <code>PLC tag</code> debe tener la variabe <code>motor</code> y el campo de <code>Address</code> la dirección <code>%Q0.0</code>.</li>
+<li><code>Variable_HMI_paro</code>: El campo de <code>PLC tag</code> para esta variable debe tener la variable <code>paro</code> y el campor de <code>Address</code> la dirección <code>%I0.1</code>.</li>
+</ul>
+</li>
+<li>
+<p>Asegurese que cada una de estas varaibles sea un tipo de dato <code>Bool</code>, el campo de <code>Connection</code> esté vinculado al <code>HMI_Conexión_1</code>; el <code>Acces Mode</code> tenga el valor <code>&lt;absolute mode&gt;</code>; el camp de <code>Acquisition cycle</code> tenga de valor \(100ms\)</p>
+</li>
+</ol>
+<p><img src="imgs/hmi-var.jpg" alt="" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="seleccion-hmi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
 
                         <div style="clear: both"></div>
@@ -161,6 +229,9 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="seleccion-hmi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
             </nav>
 
