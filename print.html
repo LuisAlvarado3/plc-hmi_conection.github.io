@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title></title>
+        <title>Configuración HMI-PLC1200</title>
         <meta name="robots" content="noindex" />
 
 
@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">2.</strong> Creación de un nuevo proyecto</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">3.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">4.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html"><strong aria-hidden="true">5.</strong> Creación de Programa LD</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">2.</strong> Creación de un nuevo proyecto (TIA PORTAL)</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">3.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">4.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html"><strong aria-hidden="true">5.</strong> Creación de Programa LD</a></li><li class="chapter-item expanded "><a href="interfaz-hmi.html"><strong aria-hidden="true">6.</strong> Creación de interfaz HMI</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,7 +114,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title"></h1>
+                    <h1 class="menu-title">Configuración HMI-PLC1200</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -146,7 +146,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introduccion"><a class="header" href="#introduccion">Introduccion</a></h1>
+                        <h2 id="acerca-de-los-autores-de-esta-guía"><a class="header" href="#acerca-de-los-autores-de-esta-guía">Acerca de los autores de esta guía.</a></h2>
+<p>Los autores de la escritura de esta guía a la fecha de hoy 20 de marzo del 2023 son estudiantes de la carrera de ingeniería de Mecatrónica en el ITSZ:</p>
+<p>— Alondra Molina Sánchez</p>
+<p>— <a href="https://github.com/LuisAlvarado3">José Luis Márquez Alvarado</a></p>
+<p>— Julian García García</p>
+<p>El evaluador de esta guía M.E.M. José Ramiro Ramiro quien funge sus activiades como profesor en el Instituto Tecnológico Superiór de Zacapoaxtla al presente año 2023.</p>
+<h1 id="introducción"><a class="header" href="#introducción">Introducción</a></h1>
+<p>Esta guía es un resumen de las actividades que se estuvieron realizando como prácticas del tema 2 de la asignatura de Instrumentación y Control Industrial en la carrera de ingeniería Mecatrónica en el ITSZ y fue realizada en base al ejemplo video-tutorial mostrado en el siguiente link:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TK0tboZrtTY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p>El video-tutorial fue llevado a cabo en esta práctica titulada <code>Configuración HMI-PLC1200</code> y durante los siguientes capítulos se describe detalladamente los pasos realizados para concluir con el resultado final de la comunicación de un HMI-PLC-PC. </p>
+<h2 id="acerca-de-las-herramientas-ocupadas-para-esta-guía"><a class="header" href="#acerca-de-las-herramientas-ocupadas-para-esta-guía">Acerca de las herramientas ocupadas para esta guía.</a></h2>
+<p>El presente libro fue realizado con una herramienta de línea de comandos de nombre <a href="https://rust-lang.github.io/mdBook/">mdbook</a> para crear <code>books</code> con un lenguaje llamado <code>markdown</code>. <code>mdbook</code> ofrece fácil sintaxis para realizar documentación de código como lo es <code>python</code> y otros lengujes. Esta es un herramienta de línea de comandos escrita en un lenguaje de programación de sistemas de nombre <code>Rust</code> y es ampliamente usada para el ambito de documentación.</p>
+<p>Posteriormente a la construcción del libro en <code>mdbook</code> este reescribe el código a <code>HTML</code>, <code>CSS</code> y <code>Javascript</code> para poder visualizarlo en el navegador. Finalmente se utilizó la plataforma <code>Git-Hub</code> para desplegar el código en la red de forma segura.
+El código fuente resultante se encuentra en el línk <a href="https://github.com/LuisAlvarado3/plc-hmi_conection.github.io">código fuente</a>, donde permanecerá abierto al público para los fines que convengan.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="1-creación-de-un-nuevo-proyecto-en-tia-portal-v16"><a class="header" href="#1-creación-de-un-nuevo-proyecto-en-tia-portal-v16">1. Creación de un nuevo proyecto en TIA PORTAL V16</a></h1>
 <p>Abra Tia Portal y cree un proyecto nuevo con el titulo que usted desee, en este caso tiene el nombre de <code>PLC-S7_1200_con_HMI_10A</code>,</p>
 <p><img src="imgs/new-project.jpg" alt="" /></p>
@@ -171,7 +184,7 @@
 </ul>
 <p><img src="imgs/add-device.jpg" alt="" /></p>
 <blockquote>
-<p>Al finalizar la selección de su dispositivo puede ver un primer vistzo de su PLC en su ventana principal,</p>
+<p>Al finalizar la selección de su dispositivo puede dar un primer vistazo de su PLC en su ventana principal,</p>
 </blockquote>
 <p><img src="imgs/view-plc.jpg" alt="" /></p>
 <h2 id="22-configuración-de-dirección-ip-del-plc"><a class="header" href="#22-configuración-de-dirección-ip-del-plc">2.2. Configuración de dirección IP del PLC</a></h2>
@@ -197,7 +210,7 @@
 </li>
 </ul>
 <p><img src="imgs/plc-ip.jpg" alt="" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="3-selección-de-hmi"><a class="header" href="#3-selección-de-hmi">3. Selección de HMI</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="3-selección-de-hmi-y-primeros-pasos-de-configuración"><a class="header" href="#3-selección-de-hmi-y-primeros-pasos-de-configuración">3. Selección de HMI y primeros pasos de configuración</a></h1>
 <h2 id="31-selección-de-hmi"><a class="header" href="#31-selección-de-hmi">3.1. Selección de HMI</a></h2>
 <ol>
 <li>Dirijase a la ventana de dispositivos (<code>Devices</code>) y seleccione el botón de <code>Add new device</code> (enmarcado en color azul).</li>
@@ -318,6 +331,38 @@
 </li>
 </ol>
 <p><img src="imgs/hmi-var.jpg" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="5-creación-de-interfaz-hmi"><a class="header" href="#5-creación-de-interfaz-hmi">5. Creación de interfaz HMI</a></h1>
+<h2 id="51-creación-y-edición-de-ventanas-de-interfaz-hmi"><a class="header" href="#51-creación-y-edición-de-ventanas-de-interfaz-hmi">5.1 Creación y edición de ventanas de interfaz HMI</a></h2>
+<ol>
+<li>Dirijase a su arbol de proyectos y despliegue la carpeta de HMI, Despliegue la carpteta de <code>Screens</code>(enmaracada en color naranja) y presione le botón <code>Add new screen</code> (enmarcada en color verde); posteriormente modifique los nombres de cada uno de los archivos que ha creado. La ventana raiz se le ha a recibido el nombre de <code>imagen raiz</code>; las otras dos cualesquiera recibe una el nombre de <code>arranqueyparo</code> y la otra <code>menu</code>.</li>
+</ol>
+<p><img src="imgs/add-screen.jpg" alt="" /></p>
+<ol start="2">
+<li>Siga los siguientes pasos para añadir botones a su interfaz con interactividad entre ventanas:
+<ul>
+<li>Abra su archivo <code>imagen raiz</code> (enmarcada en color amarillo)</li>
+<li>En el panel de <code>Toolbox</code> arrastre el icono de botón (encerrado en azul) y arrastrelo a su pantalla.</li>
+<li>En el panel de coonfiguración que se encuentra en la parte inferior de su programa puede seleccionar propiedades para añadir un icono si usted gusta o u texto.</li>
+<li>Dirijase a la ventana de eventos (encerrada en color verde) y en las seleccione la opción de <code>Click</code>.</li>
+<li>Seleccione un evento llamado <code>ActivateEvent</code> y en el campo de <code>screen name</code> selecciones la ventana de <code>menu</code> que ya ha creado con anterioridad.</li>
+</ul>
+</li>
+</ol>
+<p><img src="imgs/config-img-raiz.jpg" alt="" /></p>
+<ol start="3">
+<li>Usted puede modificar de forma similar la ventana de <code>menu</code> y añadir el titulo de <code>Arranque y paro</code> a su botón. No olvide añadir un botón más para regresar a la ventana raíz.</li>
+</ol>
+<p><img src="imgs/img-arranqueyparo.jpg" alt="" /></p>
+<ol start="4">
+<li>Añada 4 botones a la ventana de <code>arranqueyparo</code>, dos para actualizar el estado de arranque y paro, uno para regresar a la ventana <code>menu</code> y otro para regresar a la ventana raíz (<code>imagen raiz</code>); Anexe un elemento de circulo que fungirá como indicador cuando el motor esté encendido o apagado.</li>
+</ol>
+<p><img src="imgs/hmi-arranqueyparo.jpg" alt="" /></p>
+<h2 id="52-configuración-de-botones-de-arranque-paro-en-interfaz-hmi"><a class="header" href="#52-configuración-de-botones-de-arranque-paro-en-interfaz-hmi">5.2 Configuración de botones de arranque-paro en interfaz HMI</a></h2>
+<p><img src="imgs/arranque-set.jpg" alt="" /></p>
+<p><img src="imgs/arranque-reset.jpg" alt="" /></p>
+<p><img src="imgs/paro-set.jpg" alt="" /></p>
+<p><img src="imgs/paro-reset.jpg" alt="" /></p>
+<p><img src="imgs/hmi-motor.jpg" alt="" /></p>
 
                     </main>
 
