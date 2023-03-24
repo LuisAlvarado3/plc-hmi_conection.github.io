@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">2.</strong> Creación de un nuevo proyecto (TIA PORTAL)</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">3.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">4.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html"><strong aria-hidden="true">5.</strong> Creación de Programa LD</a></li><li class="chapter-item expanded "><a href="interfaz-hmi.html" class="active"><strong aria-hidden="true">6.</strong> Creación de interfaz HMI</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="config_ip.html"><strong aria-hidden="true">2.</strong> Configuración IP y Enlace físico</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">3.</strong> Creación de un nuevo proyecto (TIA PORTAL)</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">4.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">5.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html"><strong aria-hidden="true">6.</strong> Creación de Programa LD</a></li><li class="chapter-item expanded "><a href="interfaz-hmi.html" class="active"><strong aria-hidden="true">7.</strong> Creación de interfaz HMI</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -172,10 +172,20 @@
 </ol>
 <p><img src="imgs/hmi-arranqueyparo.jpg" alt="" /></p>
 <h2 id="52-configuración-de-botones-de-arranque-paro-en-interfaz-hmi"><a class="header" href="#52-configuración-de-botones-de-arranque-paro-en-interfaz-hmi">5.2 Configuración de botones de arranque-paro en interfaz HMI</a></h2>
+<ol>
+<li>Seleccione el botón verde y en la parte inferiór dirijase a los eventos del mismo elemento, seleccione la opción <code>Press</code> y le mostrará una lista para agregar eventos, busque la opción <code>SetBit</code> y agregue a <code>Tag (input/output</code> el valor de <code>Variable_HMI_arranque</code>.</li>
+</ol>
 <p><img src="imgs/arranque-set.jpg" alt="" /></p>
+<p>Realice pasos similares en la opción de <code>Release</code>, seleccione la acción como <code>ResetBit</code> y agregue a <code>Tag (input/output</code> el valor de <code>Variable_HMI_paro</code>.</p>
+<ol start="2">
+<li>Realice pasos similares para el botón rojo (paro) de acuerdo con las siguientes imagenes.</li>
+</ol>
 <p><img src="imgs/arranque-reset.jpg" alt="" /></p>
 <p><img src="imgs/paro-set.jpg" alt="" /></p>
 <p><img src="imgs/paro-reset.jpg" alt="" /></p>
+<ol start="3">
+<li>Finalmente configure en <code>animations</code> y en el árbol de opciones <code>Appearance</code> como se muestra en la siguiente imagen.</li>
+</ol>
 <p><img src="imgs/hmi-motor.jpg" alt="" /></p>
 
                     </main>

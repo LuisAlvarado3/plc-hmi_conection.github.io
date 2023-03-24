@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Page not found - Configuración HMI-PLC1200</title>
-        <base href="/">
+        <title>Configuración IP y Enlace físico - Configuración HMI-PLC1200</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="config_ip.html"><strong aria-hidden="true">2.</strong> Configuración IP y Enlace físico</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">3.</strong> Creación de un nuevo proyecto (TIA PORTAL)</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">4.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">5.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html"><strong aria-hidden="true">6.</strong> Creación de Programa LD</a></li><li class="chapter-item expanded "><a href="interfaz-hmi.html"><strong aria-hidden="true">7.</strong> Creación de interfaz HMI</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="config_ip.html" class="active"><strong aria-hidden="true">2.</strong> Configuración IP y Enlace físico</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">3.</strong> Creación de un nuevo proyecto (TIA PORTAL)</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">4.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">5.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html"><strong aria-hidden="true">6.</strong> Creación de Programa LD</a></li><li class="chapter-item expanded "><a href="interfaz-hmi.html"><strong aria-hidden="true">7.</strong> Creación de interfaz HMI</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -146,14 +145,88 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1 id="0-configuración-ip-y-enlace-físico"><a class="header" href="#0-configuración-ip-y-enlace-físico">0. Configuración IP y enlace físico</a></h1>
+<p>Uno de los primeros pasos para realizar esta práctica consiste en realizar la configuración <code>IP</code> de un computador así como la comunicación fisica entre dispositivos como lo son <code>HMI</code>, <code>PLC</code>:</p>
+<p>Para ello se utilizaron los siguientes elementos:</p>
+<ol>
+<li>Swicheador</li>
+<li>PLC S7-1200 (SIEMENS)</li>
+<li>Pantalla HMI KTP600 Basic color PN</li>
+<li>Computador (Preferentemente Portatil)</li>
+</ol>
+<p>Cada una de la especificaciones son relevantes ya que se configurarán con el programa que se debe cargar al dispositivo. Tenga en cuenta las especificaciones de su PLC y HMI que en muchas ocasiones la información se encuentran al reverso del dispositivo o en alguna parte visible de el.</p>
+<p><img src="imgs/conexion-fisica.jpg" alt="" /></p>
+<p>Una vez conectado todo el dispositivo, identifique la dirección de su <code>PLC</code>, <code>HMI</code> para posteriormente asignar una dirección <code>IP</code> estatica a su <code>PC</code>, esto con la finalidad de poder concretar una línea de comunicación reconocible en todo momento para con su <code>PLC</code>. </p>
+<blockquote>
+<p>Nota: El puente entre todos los dispositivos será su <code>Swicheador</code> por lo que tenga en cuenta que no debe desconectarlo en ningún momento.</p>
+</blockquote>
+<p>Su <code>Swicheador</code> se comunica a través del puerto <code>SRJ45</code> donde el cableado es tipo <code>UTP</code> para la comunicación entre Swicheador-Computador. El tipo de cable debe estar regido por la norma <code>TIA/EIA 568B</code> o <code>TIA/EIA 568A</code> que forman un enlace recto en su protocolo de comunicación.</p>
+<h2 id="01-configuración-ip-del-pc"><a class="header" href="#01-configuración-ip-del-pc">0.1. Configuración IP del PC</a></h2>
+<ul>
+<li>Dirijase a su centro de redes y recursos compartidos, en las que para versiones de <code>Windows 11</code> puede insertar la siguiente dirección en su explorador de archivos:</li>
+</ul>
+<pre><code class="language-shell">Panel de control\Redes e Internet\Centro de redes y recursos compartidos
+</code></pre>
+<p>Esto abrirá la ventana donde deseamos concretar una configuración con una red alámbrica (encerrado en color rojo).</p>
+<p><img src="./imgs/panel-redes.jpg" alt="" /></p>
+<ul>
+<li>Presione en las letras azules que para el caso de la imagen anterior es <code>Ethernet 6</code>. verá una ventana de estado de esa red como la siguiente:</li>
+</ul>
+<p><img src="./imgs/estado-ethernet.jpg" alt="" /></p>
+<ul>
+<li>Pulse sobre el botón de propiedades y conceda los permisos necesarios para poder abrir la siguiente ventana en la cual clickeará dos veces sobre la opción <code>Habilitar el protocolo de Internet versión 4 (TCP/IPv4)</code>:</li>
+</ul>
+<p><img src="imgs/propiedades-ethernet.jpg" alt="" /></p>
+<ul>
+<li>
+<p>Al abrir las propiedades <code>TCP/IP</code> establezca una configuración similar a la siguiente, donde:</p>
+<ol>
+<li>Dirección IP: es establecida por usted teniendo en cuenta que no debe ser igual a otras redes con las que esté en comunicación en el <code>Swicheador</code>.</li>
+<li>La Mascara de Subred: la proporciona la interfaz, aunque por si acaso puede colocar <code>255.255.255.0</code> tal como en la imagen de abajo.</li>
+<li>Puerta de enlace: no es nada mas y nada menos que la dirección del Swicheador.</li>
+</ol>
+</li>
+</ul>
+<p><img src="imgs/propiedades-tcp-ip.jpg" alt="" /></p>
+<ul>
+<li>Corrobore si su dirección <code>IP</code> ha realizado un enlace exitoso ejecutando el siguiente comando en <code>Powershell</code> o <code>CMD</code> de acuerdo a la dirección <code>IP</code> que proporcionó:</li>
+</ul>
+<pre><code class="language-Powershell">ping 192.168.0.211
+</code></pre>
+<p>En respuesta positiva encontrará una respuesta como la siguiente: </p>
+<pre><code class="language-Powershell">Haciendo ping a 192.168.0.211 con 32 bytes de datos:
+Respuesta desde 192.168.0.211: bytes=32 tiempo&lt;1m TTL=128
+Respuesta desde 192.168.0.211: bytes=32 tiempo&lt;1m TTL=128
+Respuesta desde 192.168.0.211: bytes=32 tiempo&lt;1m TTL=128
+Respuesta desde 192.168.0.211: bytes=32 tiempo&lt;1m TTL=128
+
+Estadísticas de ping para 192.168.0.211:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    Mínimo = 0ms, Máximo = 0ms, Media = 0ms
+</code></pre>
+<ul>
+<li>Siguiendo con el mismo comando, compruebe su comunicación con la puerta de enlace, tal como:</li>
+</ul>
+<pre><code class="language-Powershell">ping 192.168.0.254
+</code></pre>
+<blockquote>
+<p>Si existen otros dispositivos conectados, pruebe con la dirección de ese dispositivo.</p>
+</blockquote>
+<p>En el siguiente paso se realizará un proyecto en el software <code>TIA PORTAL V16</code>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
+                            <a rel="next" href="nuevo-proyecto.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -161,7 +234,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
+                    <a rel="next" href="nuevo-proyecto.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>

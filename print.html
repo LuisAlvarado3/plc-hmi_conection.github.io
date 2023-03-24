@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">2.</strong> Creación de un nuevo proyecto (TIA PORTAL)</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">3.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">4.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html"><strong aria-hidden="true">5.</strong> Creación de Programa LD</a></li><li class="chapter-item expanded "><a href="interfaz-hmi.html"><strong aria-hidden="true">6.</strong> Creación de interfaz HMI</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduccion</a></li><li class="chapter-item expanded "><a href="config_ip.html"><strong aria-hidden="true">2.</strong> Configuración IP y Enlace físico</a></li><li class="chapter-item expanded "><a href="nuevo-proyecto.html"><strong aria-hidden="true">3.</strong> Creación de un nuevo proyecto (TIA PORTAL)</a></li><li class="chapter-item expanded "><a href="seleccion-plc.html"><strong aria-hidden="true">4.</strong> Selección de PLC</a></li><li class="chapter-item expanded "><a href="seleccion-hmi.html"><strong aria-hidden="true">5.</strong> Selección de HMI</a></li><li class="chapter-item expanded "><a href="programa-ld.html"><strong aria-hidden="true">6.</strong> Creación de Programa LD</a></li><li class="chapter-item expanded "><a href="interfaz-hmi.html"><strong aria-hidden="true">7.</strong> Creación de interfaz HMI</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -149,6 +149,7 @@
                         <h2 id="acerca-de-los-autores-de-esta-guía"><a class="header" href="#acerca-de-los-autores-de-esta-guía">Acerca de los autores de esta guía.</a></h2>
 <p>Los autores de la escritura de esta guía a la fecha de hoy 20 de marzo del 2023 son estudiantes de la carrera de ingeniería de Mecatrónica en el ITSZ:</p>
 <p>— Alondra Molina Sánchez</p>
+<p>— Francisco Javier Guerrero Guzmán</p>
 <p>— <a href="https://github.com/LuisAlvarado3">José Luis Márquez Alvarado</a></p>
 <p>— Julian García García</p>
 <p>El evaluador de esta guía M.E.M. José Ramiro Ramiro quien funge sus activiades como profesor en el Instituto Tecnológico Superiór de Zacapoaxtla al presente año 2023.</p>
@@ -160,6 +161,76 @@
 <p>El presente libro fue realizado con una herramienta de línea de comandos de nombre <a href="https://rust-lang.github.io/mdBook/">mdbook</a> para crear <code>books</code> con un lenguaje llamado <code>markdown</code>. <code>mdbook</code> ofrece fácil sintaxis para realizar documentación de código como lo es <code>python</code> y otros lengujes. Esta es un herramienta de línea de comandos escrita en un lenguaje de programación de sistemas de nombre <code>Rust</code> y es ampliamente usada para el ambito de documentación.</p>
 <p>Posteriormente a la construcción del libro en <code>mdbook</code> este reescribe el código a <code>HTML</code>, <code>CSS</code> y <code>Javascript</code> para poder visualizarlo en el navegador. Finalmente se utilizó la plataforma <code>Git-Hub</code> para desplegar el código en la red de forma segura.
 El código fuente resultante se encuentra en el línk <a href="https://github.com/LuisAlvarado3/plc-hmi_conection.github.io">código fuente</a>, donde permanecerá abierto al público para los fines que convengan.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="0-configuración-ip-y-enlace-físico"><a class="header" href="#0-configuración-ip-y-enlace-físico">0. Configuración IP y enlace físico</a></h1>
+<p>Uno de los primeros pasos para realizar esta práctica consiste en realizar la configuración <code>IP</code> de un computador así como la comunicación fisica entre dispositivos como lo son <code>HMI</code>, <code>PLC</code>:</p>
+<p>Para ello se utilizaron los siguientes elementos:</p>
+<ol>
+<li>Swicheador</li>
+<li>PLC S7-1200 (SIEMENS)</li>
+<li>Pantalla HMI KTP600 Basic color PN</li>
+<li>Computador (Preferentemente Portatil)</li>
+</ol>
+<p>Cada una de la especificaciones son relevantes ya que se configurarán con el programa que se debe cargar al dispositivo. Tenga en cuenta las especificaciones de su PLC y HMI que en muchas ocasiones la información se encuentran al reverso del dispositivo o en alguna parte visible de el.</p>
+<p><img src="imgs/conexion-fisica.jpg" alt="" /></p>
+<p>Una vez conectado todo el dispositivo, identifique la dirección de su <code>PLC</code>, <code>HMI</code> para posteriormente asignar una dirección <code>IP</code> estatica a su <code>PC</code>, esto con la finalidad de poder concretar una línea de comunicación reconocible en todo momento para con su <code>PLC</code>. </p>
+<blockquote>
+<p>Nota: El puente entre todos los dispositivos será su <code>Swicheador</code> por lo que tenga en cuenta que no debe desconectarlo en ningún momento.</p>
+</blockquote>
+<p>Su <code>Swicheador</code> se comunica a través del puerto <code>SRJ45</code> donde el cableado es tipo <code>UTP</code> para la comunicación entre Swicheador-Computador. El tipo de cable debe estar regido por la norma <code>TIA/EIA 568B</code> o <code>TIA/EIA 568A</code> que forman un enlace recto en su protocolo de comunicación.</p>
+<h2 id="01-configuración-ip-del-pc"><a class="header" href="#01-configuración-ip-del-pc">0.1. Configuración IP del PC</a></h2>
+<ul>
+<li>Dirijase a su centro de redes y recursos compartidos, en las que para versiones de <code>Windows 11</code> puede insertar la siguiente dirección en su explorador de archivos:</li>
+</ul>
+<pre><code class="language-shell">Panel de control\Redes e Internet\Centro de redes y recursos compartidos
+</code></pre>
+<p>Esto abrirá la ventana donde deseamos concretar una configuración con una red alámbrica (encerrado en color rojo).</p>
+<p><img src="./imgs/panel-redes.jpg" alt="" /></p>
+<ul>
+<li>Presione en las letras azules que para el caso de la imagen anterior es <code>Ethernet 6</code>. verá una ventana de estado de esa red como la siguiente:</li>
+</ul>
+<p><img src="./imgs/estado-ethernet.jpg" alt="" /></p>
+<ul>
+<li>Pulse sobre el botón de propiedades y conceda los permisos necesarios para poder abrir la siguiente ventana en la cual clickeará dos veces sobre la opción <code>Habilitar el protocolo de Internet versión 4 (TCP/IPv4)</code>:</li>
+</ul>
+<p><img src="imgs/propiedades-ethernet.jpg" alt="" /></p>
+<ul>
+<li>
+<p>Al abrir las propiedades <code>TCP/IP</code> establezca una configuración similar a la siguiente, donde:</p>
+<ol>
+<li>Dirección IP: es establecida por usted teniendo en cuenta que no debe ser igual a otras redes con las que esté en comunicación en el <code>Swicheador</code>.</li>
+<li>La Mascara de Subred: la proporciona la interfaz, aunque por si acaso puede colocar <code>255.255.255.0</code> tal como en la imagen de abajo.</li>
+<li>Puerta de enlace: no es nada mas y nada menos que la dirección del Swicheador.</li>
+</ol>
+</li>
+</ul>
+<p><img src="imgs/propiedades-tcp-ip.jpg" alt="" /></p>
+<ul>
+<li>Corrobore si su dirección <code>IP</code> ha realizado un enlace exitoso ejecutando el siguiente comando en <code>Powershell</code> o <code>CMD</code> de acuerdo a la dirección <code>IP</code> que proporcionó:</li>
+</ul>
+<pre><code class="language-Powershell">ping 192.168.0.211
+</code></pre>
+<p>En respuesta positiva encontrará una respuesta como la siguiente: </p>
+<pre><code class="language-Powershell">Haciendo ping a 192.168.0.211 con 32 bytes de datos:
+Respuesta desde 192.168.0.211: bytes=32 tiempo&lt;1m TTL=128
+Respuesta desde 192.168.0.211: bytes=32 tiempo&lt;1m TTL=128
+Respuesta desde 192.168.0.211: bytes=32 tiempo&lt;1m TTL=128
+Respuesta desde 192.168.0.211: bytes=32 tiempo&lt;1m TTL=128
+
+Estadísticas de ping para 192.168.0.211:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    Mínimo = 0ms, Máximo = 0ms, Media = 0ms
+</code></pre>
+<ul>
+<li>Siguiendo con el mismo comando, compruebe su comunicación con la puerta de enlace, tal como:</li>
+</ul>
+<pre><code class="language-Powershell">ping 192.168.0.254
+</code></pre>
+<blockquote>
+<p>Si existen otros dispositivos conectados, pruebe con la dirección de ese dispositivo.</p>
+</blockquote>
+<p>En el siguiente paso se realizará un proyecto en el software <code>TIA PORTAL V16</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="1-creación-de-un-nuevo-proyecto-en-tia-portal-v16"><a class="header" href="#1-creación-de-un-nuevo-proyecto-en-tia-portal-v16">1. Creación de un nuevo proyecto en TIA PORTAL V16</a></h1>
 <p>Abra Tia Portal y cree un proyecto nuevo con el titulo que usted desee, en este caso tiene el nombre de <code>PLC-S7_1200_con_HMI_10A</code>,</p>
 <p><img src="imgs/new-project.jpg" alt="" /></p>
@@ -168,6 +239,7 @@ El código fuente resultante se encuentra en el línk <a href="https://github.co
 <blockquote>
 <p>Esto indicará que su proyecto ha sido creado exitosamente</p>
 </blockquote>
+<p>En el siguiente capítulo se realizará la selección de un PLC así como la configuración en <code>TIA PORTAL V16</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="2-selección-de-plc-y-configuración-de-dirección-ip"><a class="header" href="#2-selección-de-plc-y-configuración-de-dirección-ip">2. Selección de PLC y configuración de dirección IP</a></h1>
 <h2 id="21-selección-de-plc"><a class="header" href="#21-selección-de-plc">2.1. Selección de PLC</a></h2>
 <p>Dirijase al botón de dispositivos y redes de su proyecto, si su software se encuentra en inglés seleccione <code>Devices &amp; networks</code>,</p>
@@ -210,6 +282,7 @@ El código fuente resultante se encuentra en el línk <a href="https://github.co
 </li>
 </ul>
 <p><img src="imgs/plc-ip.jpg" alt="" /></p>
+<p>En el siguiente capítulo se empleará la selección de un dispositivo <code>HMI</code> en <code>TIA PORTAL</code> y explicará como se configurará la interfaz en la pantalla.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="3-selección-de-hmi-y-primeros-pasos-de-configuración"><a class="header" href="#3-selección-de-hmi-y-primeros-pasos-de-configuración">3. Selección de HMI y primeros pasos de configuración</a></h1>
 <h2 id="31-selección-de-hmi"><a class="header" href="#31-selección-de-hmi">3.1. Selección de HMI</a></h2>
 <ol>
@@ -263,6 +336,7 @@ El código fuente resultante se encuentra en el línk <a href="https://github.co
 <p>Al finalizar toda la configuración de su HMI podrá ver una vista similar a la de la imagen siguiente; y en su árbol de carpetas de dispositivos encontrará que se ha añadido una carpeta con el nombre de <code>HMI_1 [KTP600 Basic color PN]</code></p>
 </blockquote>
 <p><img src="imgs/final-create-img.jpg" alt="" /></p>
+<p>El proximo capítulo se realizará el programa que ejecutará el paro y ejecución de un motor asignando direcciones del <code>PLC</code> que conformarán la respuesta entre <code>HMI-PLC</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="4-creación-de-programa-ld"><a class="header" href="#4-creación-de-programa-ld">4. Creación de Programa LD</a></h1>
 <h2 id="41-definición-de-variables-para-el-programa-en-ld"><a class="header" href="#41-definición-de-variables-para-el-programa-en-ld">4.1. Definición de variables para el programa en LD</a></h2>
 <ol>
@@ -331,6 +405,7 @@ El código fuente resultante se encuentra en el línk <a href="https://github.co
 </li>
 </ol>
 <p><img src="imgs/hmi-var.jpg" alt="" /></p>
+<p>Una vez finalizado el programa, se agrega la parte interactiva del usuario como botones y colores de las escenas de pantalla en el <code>HMI</code> que interactuarán con el usuario.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="5-creación-de-interfaz-hmi"><a class="header" href="#5-creación-de-interfaz-hmi">5. Creación de interfaz HMI</a></h1>
 <h2 id="51-creación-y-edición-de-ventanas-de-interfaz-hmi"><a class="header" href="#51-creación-y-edición-de-ventanas-de-interfaz-hmi">5.1 Creación y edición de ventanas de interfaz HMI</a></h2>
 <ol>
@@ -358,10 +433,20 @@ El código fuente resultante se encuentra en el línk <a href="https://github.co
 </ol>
 <p><img src="imgs/hmi-arranqueyparo.jpg" alt="" /></p>
 <h2 id="52-configuración-de-botones-de-arranque-paro-en-interfaz-hmi"><a class="header" href="#52-configuración-de-botones-de-arranque-paro-en-interfaz-hmi">5.2 Configuración de botones de arranque-paro en interfaz HMI</a></h2>
+<ol>
+<li>Seleccione el botón verde y en la parte inferiór dirijase a los eventos del mismo elemento, seleccione la opción <code>Press</code> y le mostrará una lista para agregar eventos, busque la opción <code>SetBit</code> y agregue a <code>Tag (input/output</code> el valor de <code>Variable_HMI_arranque</code>.</li>
+</ol>
 <p><img src="imgs/arranque-set.jpg" alt="" /></p>
+<p>Realice pasos similares en la opción de <code>Release</code>, seleccione la acción como <code>ResetBit</code> y agregue a <code>Tag (input/output</code> el valor de <code>Variable_HMI_paro</code>.</p>
+<ol start="2">
+<li>Realice pasos similares para el botón rojo (paro) de acuerdo con las siguientes imagenes.</li>
+</ol>
 <p><img src="imgs/arranque-reset.jpg" alt="" /></p>
 <p><img src="imgs/paro-set.jpg" alt="" /></p>
 <p><img src="imgs/paro-reset.jpg" alt="" /></p>
+<ol start="3">
+<li>Finalmente configure en <code>animations</code> y en el árbol de opciones <code>Appearance</code> como se muestra en la siguiente imagen.</li>
+</ol>
 <p><img src="imgs/hmi-motor.jpg" alt="" /></p>
 
                     </main>
